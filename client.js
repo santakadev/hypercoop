@@ -4,7 +4,7 @@ var net = require('net')
 
 var feed = hypercore(
     ram,
-    '0f69a6c48060ad5eb9ef5be1bc46f325cfe3354d64712520f8dee31f4b59b4cb',
+    'e0878bd195da4bec33675b76231f22f691c69065170b0a1b2da1d6015393fcee',
     {valueEncoding: 'utf-8'}
 )
 

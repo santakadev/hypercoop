@@ -8,5 +8,8 @@ Proof of concept of Distributed Marketplaces for an alternative economy.
 
 
 - [x] Crear base de datos hypercore y connectar nodos (cliente-servidor)
-- [ ] Nodo publica catalogo de productos BD hypercore
-- [ ] Nodos que leen el catálogo
+- [x] Nodo publica catalogo de productos BD hypercore
+- [x] Nodos que leen el catálogo
+- [ ] Go P2P
+- [ ] Ir hacia el navegador
+- [ ] Servidor HTTP -> command protocolo
