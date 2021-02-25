@@ -12,5 +12,6 @@ Proof of concept of Distributed Marketplaces for an alternative economy.
 - [x] Nodos que leen el catálogo
 - [x] Typerscript basic configuration
 - [x] Empezar a ir hacia el navegador
-- [ ] Servidor HTTP -> command protocolo
+- [x] Servidor HTTP basico
+- [x] Webform for creation products in hypercore database
 - [ ] Go P2P
