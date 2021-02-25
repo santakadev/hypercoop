@@ -10,7 +10,7 @@ Proof of concept of Distributed Marketplaces for an alternative economy.
 - [x] Crear base de datos hypercore y connectar nodos (cliente-servidor)
 - [x] Nodo publica catalogo de productos BD hypercore
 - [x] Nodos que leen el catálogo
-- [ ] Typerscript
-- [ ] Go P2P
-- [ ] Ir hacia el navegador
+- [x] Typerscript basic configuration
+- [x] Empezar a ir hacia el navegador
 - [ ] Servidor HTTP -> command protocolo
+- [ ] Go P2P
