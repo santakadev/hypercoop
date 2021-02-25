@@ -4,12 +4,14 @@
   "description": "Proof of concept of Distributed Marketplaces for an alternative economy.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc --outFile public/index.js src/index.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "hypercore": "^9.8.0",
-    "random-access-memory": "^3.1.2"
+    "random-access-memory": "^3.1.2",
+    "typescript": "^4.2.2"
   }
 }
