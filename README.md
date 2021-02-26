@@ -4,9 +4,7 @@ Proof of concept of decentralized Marketplaces for an alternative economy.
 
 ## Next
 
-- [x] Use [hyperswarm](https://github.com/hyperswarm/hyperswarm) to make fully ditributted.
-- [x] Refactoring: split HTTP API from hypercore.
-- [x] Refactoring: use HTTP framework.
+- [ ] Update product action.
 - [ ] Create a monorepo structure: split consumer and producers application.
 - [ ] Work on catalog protocol specification.
 - [ ] Test product creation component.
@@ -15,9 +13,16 @@ Proof of concept of decentralized Marketplaces for an alternative economy.
 
 ## Timeline
 
-
 ### 26/02/2021
 
+P2P connections using (https://github.com/hyperswarm/hyperswarm). Now consumer nodes can also exchange
+information
+
+![P2P](/doc/img/hypercoop-20210226.png)
+
+Other changes:
+- [x] Refactoring: split HTTP API from hypercore.
+- [x] Refactoring: use HTTP framework.
 
 #### Limitations
 
