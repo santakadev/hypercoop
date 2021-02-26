@@ -1,17 +1,35 @@
-# MarketP2Place
+# Hypercoop
 
-Proof of concept of Distributed Marketplaces for an alternative economy.
+Proof of concept of decentralized Marketplaces for an alternative economy.
 
-- Manual (offline) and FairCoin payments.
-- Open Protocol
-- Sync (HTTP) and async (P2P) communication between nodes.
+## Next
 
+- [ ] Use [hyperswarm](https://github.com/hyperswarm/hyperswarm) to make fully ditributted.
+- [ ] Refactoring: split HTTP API from hypercore.
+- [ ] Refactoring: use HTTP framework.
+- [ ] Create a monorepo structure: split consumer and producers application.
+- [ ] Work on catalog protocol specification.
+- [ ] Test product creation component.
+- [ ] Add uuid to products.
+- [ ] Registration workflow between producers and conumers.
 
-- [x] Crear base de datos hypercore y connectar nodos (cliente-servidor)
-- [x] Nodo publica catalogo de productos BD hypercore
-- [x] Nodos que leen el catálogo
-- [x] Typerscript basic configuration
-- [x] Empezar a ir hacia el navegador
-- [x] Servidor HTTP basico
-- [x] Webform for creation products in hypercore database
-- [ ] Go P2P
+## Timeline
+
+### 25/02/2021
+
+Producers can register and trasmit products to consumer nodes.
+
+![Product creation](/doc/img/hypercoop-20210225.png)
+
+#### Limitations
+
+- Products doen't have an id.
+- Product's prices doen't have currency.
+- Products can't be updated.
+- Producers work as servers, no truly P2P.
+- Each time the `products` database is created we have to copy the public key to the client code.
+- No validation.
+- No automatic test.
+- No API routing.
+- Hardcoded paths for TS compilation.
+- No real TS features usage.
