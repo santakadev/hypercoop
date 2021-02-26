@@ -1,21 +1,31 @@
 const http = require('http');
+const hyperswarm = require('hyperswarm')
+const crypto = require('crypto')
 var hypercore = require('hypercore')
-var net = require('net')
 
 var feed = hypercore('./products', {valueEncoding: 'json'})
 
 feed.on('ready', () => {
     console.log(feed.key.toString('hex'))
-})
 
-var hypercoreServer = net.createServer(function (socket) {
-    socket.pipe(feed.replicate(false, { live: true })).pipe(socket)
-})
+    // Hypercore Server
+    const swarm = hyperswarm()
 
-const port = 8000
+    const topic = crypto.createHash('sha256')
+    .update('hypercoop')
+    .digest()
 
-hypercoreServer.listen(port, () => {
-    console.log(`listening on localhost:${port}`)
+    swarm.join(topic, {
+        lookup: true, // find & connect to peers
+        announce: true // optional- announce self as a connection target
+    })
+
+    swarm.on('connection', (socket, info) => {
+        console.log('new connection!')
+        console.log(`client: ${info.client}`)
+        console.log(socket.remotePort)
+        socket.pipe(feed.replicate(info.client, { live: true })).pipe(socket)
+    })
 })
 
 const requestListener = function (req, res) {
@@ -46,6 +56,7 @@ const requestListener = function (req, res) {
     })
   }
   
+  // HTTP Server
   const server = http.createServer(requestListener);
   server.listen(8080, () => {
     console.log(`listening on localhost:8080`)

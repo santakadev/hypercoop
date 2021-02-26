@@ -1,14 +1,34 @@
-var ram = require('random-access-memory')
 var hypercore = require('hypercore')
-var net = require('net')
+const hyperswarm = require('hyperswarm')
+const crypto = require('crypto')
+
+id = process.argv[process.argv.length - 1]
 
 var feed = hypercore(
-    ram,
-    'e0878bd195da4bec33675b76231f22f691c69065170b0a1b2da1d6015393fcee',
+    `./products-client-${id}`,
+    'fb179783fb2bb665e5e93718efb90220cbaea4097a43ce91ebbcf544b60f9e8a',
     {valueEncoding: 'utf-8'}
 )
 
 feed.on('ready', () => {
+
+    const swarm = hyperswarm()
+
+    const topic = crypto.createHash('sha256')
+    .update('hypercoop')
+    .digest()
+
+    swarm.join(topic, {
+        lookup: true, // find & connect to peers
+        announce: true // optional- announce self as a connection target
+    })
+
+    swarm.on('connection', (socket, info) => {
+        console.log('new connection!')
+        console.log(`client: ${info.client}`)
+        console.log(socket.remotePort)
+        socket.pipe(feed.replicate(info.client, { live: true })).pipe(socket)
+    })
     
     var stream = feed.createReadStream({'live': true})
 
@@ -16,9 +36,3 @@ feed.on('ready', () => {
         console.log(data.toString())
     })
 })
-
-var socket = net.connect({ port: 8000 }, () => {
-    console.log('connected to server')
-})
-
-socket.pipe(feed.replicate(true, { live: true })).pipe(socket)
